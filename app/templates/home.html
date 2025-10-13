@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h1>FastAPI Login Demo</h1>
+  {% if user %}
+    <p>Welcome, <strong>{{ user.username }}</strong>!</p>
+    <p><a href="/protected">Go to protected page</a></p>
+    <p><a href="/logout">Log out</a></p>
+  {% else %}
+    <p>You are not logged in.</p>
+    <p><a href="/login">Log in</a> or <a href="/register">Register</a></p>
+  {% endif %}
+{% endblock %}

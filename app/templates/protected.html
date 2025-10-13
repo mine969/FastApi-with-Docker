@@ -1,0 +1,6 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h2>Protected Page</h2>
+  <p>This page is visible only to logged in users.</p>
+  <p>Hello, <strong>{{ user.username }}</strong>.</p>
+{% endblock %}

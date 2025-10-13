@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  web:
+    build: ./app
+    container_name: fastapi_web
+    ports:
+      - "8000:8000"
+    environment:
+      - REDIS_URL=redis://redis:6379/0
+      - DATABASE_URL=sqlite:///./users.db
+      - SECRET_KEY=change-this-secret-in-prod
+    depends_on:
+      - redis
+    volumes:
+      - app_data:/code
+  redis:
+    image: redis:7-alpine
+    container_name: fastapi_redis
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--appendonly", "yes"]
+volumes:
+  app_data:
